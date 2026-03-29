@@ -2,7 +2,7 @@
 {:source-paths
  ["src"]
 
- :dependencies []
+ :dependencies [org.clojure.data.json]
 
  :builds
  {:app {:target :npm-module
