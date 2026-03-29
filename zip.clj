@@ -19,7 +19,7 @@
         (file->zip f zip-writter (str dest 
                                       (.getName f))))
                 
-(defn stt-zip
+(defn zip
     [in zip-writter dest]
     (do (.putNextEntry zip-writter (ZipEntry. dest))
         (io/copy in zip-writter)
