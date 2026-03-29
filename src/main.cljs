@@ -2,7 +2,7 @@
     (:require ["node:fs/promises" :refer (readFile close)]))
 
 (def plugin
-    (doto (readFile "../plugin.json")
+    (-> (readFile "../plugin.json")
           (.then #(js->clj (.parse js/JSON %)))
           (.catch println)
           (.finally close)))
