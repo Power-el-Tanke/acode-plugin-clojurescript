@@ -2,9 +2,12 @@
 {:source-paths
  ["src"]
 
- :dependencies [org.clojure.data.json]
+ :dependencies [[org.clojure/data.json "2.5.2"]]
 
  :builds
  {:app {:target :npm-module
         :output-dir "./output/main.js"
-        :main acode-plugin.main/main}}}
+        :modules 
+        {:app 
+            {:init-fn acode-plugin.main/main}}
+        :build-hooks [(dev.zip/zip-project)]}}}

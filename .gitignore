@@ -4,3 +4,4 @@ dist.zip
 dist
 output
 .shadow-cljs
+*.zip

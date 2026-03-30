@@ -1,4 +1,4 @@
-(ns main
+(ns plugin-name.main
     (:require ["node:fs/promises" :refer (readFile close)]))
 
 (def plugin
