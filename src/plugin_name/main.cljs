@@ -1,11 +1,7 @@
 (ns plugin-name.main
     (:require ["node:fs/promises" :refer (readFile close)]))
 
-(def plugin
-    (-> (readFile "../plugin.json")
-          (.then #(js->clj (.parse js/JSON %)))
-          (.catch println)
-          (.finally close)))
+(def plugin-id "acode.plugin")
 
 (defn init
     []
@@ -17,8 +13,7 @@
 
 (defn main []
     (when (window/acode)
-          (let [acode-plugin (new AcodePlugin)
-                plugin-id (:id plugin)]
+          (let [acode-plugin (new AcodePlugin)]
                (letfn [(plugin-init 
                         [base-url 
                          page 
