@@ -17,11 +17,11 @@
 (defn dir->zip
     [file zip-writter dest]
     (if (.isDirectory file)
-        (do (.putNextEntry zip-writter (ZipEntry. dest))
+        (do (.putNextEntry zip-writter (ZipEntry. (str dest "/")))
             (doseq [f (.listFiles file)]
                (dir->zip f zip-writter (str dest 
-                                              (.getName f) 
-                                              "/"))))
+                                            "/"
+                                            (.getName f)))))
         
         (file->zip file zip-writter dest)))
                 
@@ -40,6 +40,6 @@
                               (file->zip changelog zip-writter "CHANGELOG.md"))
                         (when readme
                               (file->zip readme zip-writter "README.md"))
-                        (dir->zip (io/file "output/") zip-writter "dist/")
+                        (dir->zip (io/file "output/") zip-writter "dist")
              (println "plugin.zip written")
              build-state))))
